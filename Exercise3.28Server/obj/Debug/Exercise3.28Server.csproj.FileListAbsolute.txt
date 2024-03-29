@@ -1,0 +1,7 @@
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\bin\Debug\Exercise3.28Server.exe.config
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\bin\Debug\Exercise3.28Server.exe
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\bin\Debug\Exercise3.28Server.pdb
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\obj\Debug\Exercise3.28Server.csproj.AssemblyReference.cache
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\obj\Debug\Exercise3.28Server.csproj.CoreCompileInputs.cache
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\obj\Debug\Exercise3.28Server.exe
+E:\AA_Net\Project\Exercise3.28Server\Exercise3.28Server\obj\Debug\Exercise3.28Server.pdb
