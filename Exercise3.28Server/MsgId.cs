@@ -25,5 +25,17 @@ namespace Exercise3._28Server
         //玩家下线
         public const int CS_PLAYER_DOWN = 1008;
         public const int SC_PLAYER_DOWN = 1009;
+
+        //注册
+        public const int CS_REGISTER = 1010;
+        public const int SC_REGISTER = 1011;
+
+        //进入游戏
+        public const int CS_ENTER_GAME = 1012;
+        public const int SC_ENTER_GAME = 1013;
+
+        //玩家受击
+        public const int CS_PLAYER_HIT = 1014;
+        public const int SC_PLAYER_HIT = 1015;
     }
 }

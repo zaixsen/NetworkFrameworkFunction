@@ -162,6 +162,28 @@ namespace PlayerDataProtocol {
       }
     }
 
+    /// <summary>Field number for the "nowHp" field.</summary>
+    public const int NowHpFieldNumber = 7;
+    private int nowHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int NowHp {
+      get { return nowHp_; }
+      set {
+        nowHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maxHp" field.</summary>
+    public const int MaxHpFieldNumber = 8;
+    private int maxHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MaxHp {
+      get { return maxHp_; }
+      set {
+        maxHp_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       if (Username.Length != 0) {
@@ -188,6 +210,14 @@ namespace PlayerDataProtocol {
         output.WriteRawTag(48);
         output.WriteEnum((int) AniState);
       }
+      if (NowHp != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(NowHp);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(MaxHp);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -210,6 +240,12 @@ namespace PlayerDataProtocol {
       }
       if (AniState != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AniState);
+      }
+      if (NowHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NowHp);
+      }
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
       }
       return size;
     }
@@ -244,6 +280,14 @@ namespace PlayerDataProtocol {
           }
           case 48: {
             aniState_ = (global::PlayerDataProtocol.AnimitorState) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            NowHp = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            MaxHp = input.ReadInt32();
             break;
           }
         }

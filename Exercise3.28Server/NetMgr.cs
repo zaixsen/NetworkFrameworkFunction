@@ -55,7 +55,7 @@ namespace Exercise3._28Server
 
             for (int i = 0; i < clients.Count; i++)
             {
-                if (clients[i].playerData.Username != username)
+                if (clients[i].playerData.Username != username && clients[i].playerData.Path != "")
                 {
                     onLinePlayer.PlayerData.Add(clients[i].playerData);
                 }
@@ -78,7 +78,6 @@ namespace Exercise3._28Server
                     client.cliSocket.Shutdown(SocketShutdown.Both);
                     client.cliSocket.Close();
                     clients.Remove(client);
-
                     return;
                 }
 
@@ -110,6 +109,7 @@ namespace Exercise3._28Server
             }
         }
 
+
         public void SendAllClientNoSelf(string username, int msgId, byte[] content)
         {
             for (int i = 0; i < clients.Count; i++)
@@ -118,6 +118,13 @@ namespace Exercise3._28Server
                 {
                     SendClient(clients[i], msgId, content);
                 }
+            }
+        }
+        public void SendAllClient(int msgId, byte[] content)
+        {
+            for (int i = 0; i < clients.Count; i++)
+            {
+                SendClient(clients[i], msgId, content);
             }
         }
 

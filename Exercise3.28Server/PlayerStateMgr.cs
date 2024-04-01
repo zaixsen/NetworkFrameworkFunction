@@ -1,5 +1,7 @@
 ﻿using PlayerDataProtocol;
 using Google.Protobuf;
+using System.Text;
+using System;
 
 namespace Exercise3._28Server
 {
@@ -10,6 +12,22 @@ namespace Exercise3._28Server
             MessageCenter.Ins.AddLisenter(MsgId.CS_BEFORE_PLAYWER, OnBeforePlayer);
             MessageCenter.Ins.AddLisenter(MsgId.CS_PLAYER_STATE, OnUpdatePlayerState);
             MessageCenter.Ins.AddLisenter(MsgId.CS_PLAYER_DOWN, OnPlayerDown);
+            MessageCenter.Ins.AddLisenter(MsgId.CS_ENTER_GAME, OnPlayerEnter);
+            MessageCenter.Ins.AddLisenter(MsgId.CS_PLAYER_HIT, OnPlayerHit);
+        }
+
+        //自己的视角不掉血
+
+        private void OnPlayerHit(MsgData obj)
+        {
+            NetMgr.Ins.SendAllClient(MsgId.SC_PLAYER_HIT, obj.content);
+        }
+
+        private void OnPlayerEnter(MsgData obj)
+        {
+            string path = UTF8Encoding.UTF8.GetString(obj.content);
+            obj.client.playerData.Path = path;
+            NetMgr.Ins.SendAllClientNoSelf(obj.client.playerData.Username, MsgId.SC_OTHER_PLAYWE_ONLINE, obj.client.playerData.ToByteArray());
         }
 
         private void OnPlayerDown(MsgData obj)

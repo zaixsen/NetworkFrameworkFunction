@@ -24,7 +24,12 @@ namespace Exercise3._28Server
 
         public void SetPlayerData(PlayerData player)
         {
-            playerData = player;
+            playerData.Posx = player.Posx;
+            playerData.Posz = player.Posz;
+            playerData.Roty = player.Roty;
+            playerData.AniState = player.AniState;
+            playerData.MaxHp = player.MaxHp;
+            playerData.NowHp = player.NowHp;
         }
     }
 }

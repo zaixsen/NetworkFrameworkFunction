@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Protobuf;
+
 namespace Exercise3._28Server
 {
     class LoginMgr : Singleton<LoginMgr>
@@ -15,33 +16,46 @@ namespace Exercise3._28Server
 
         public void Init()
         {
-            InitRole();
             MessageCenter.Ins.AddLisenter(MsgId.CS_LOGIN, OnLogin);
+            MessageCenter.Ins.AddLisenter(MsgId.CS_REGISTER, OnRegister);
         }
 
-        private void InitRole()
+        private void OnRegister(MsgData obj)
         {
-            for (int i = 0; i < 10; i++)
+            UserData userData = UserData.Parser.ParseFrom(obj.content);
+            string str = "";
+            if (dic_users.ContainsKey(userData.Username))
             {
-                roles.Add("player_" + i);
+                str = "已经存在此账户！！！";
             }
+            else
+            {
+                dic_users.Add(userData.Username, userData);
+                str = "注册成功！！！";
+            }
+            NetMgr.Ins.SendClient(obj.client, MsgId.SC_REGISTER, UTF8Encoding.UTF8.GetBytes(str));
         }
 
         private void OnLogin(MsgData obj)
         {
             UserData userData = UserData.Parser.ParseFrom(obj.content);
-            if (dic_users.ContainsKey(userData.Username))
+
+            if (!dic_users.ContainsKey(userData.Username))
             {
-                Console.WriteLine("已存在" + userData.Username);
+                NetMgr.Ins.SendClient(obj.client, MsgId.SC_LOGIN, UTF8Encoding.UTF8.GetBytes("无此账户！！！"));
                 return;
             }
 
             obj.client.userData = userData;
             obj.client.playerData.Username = userData.Username;
-            obj.client.playerData.Path = roles[random.Next(0, roles.Count)];
+            obj.client.playerData.NowHp = 3;
+            obj.client.playerData.MaxHp = 3;
 
-            NetMgr.Ins.SendClient(obj.client, MsgId.SC_LOGIN, obj.client.playerData.ToByteArray());
-            NetMgr.Ins.SendAllClientNoSelf(obj.client.playerData.Username, MsgId.SC_OTHER_PLAYWE_ONLINE, obj.client.playerData.ToByteArray());
+            //obj.client.playerData.Path = roles[random.Next(0, roles.Count)];
+
+            NetMgr.Ins.SendClient(obj.client, MsgId.SC_LOGIN, UTF8Encoding.UTF8.GetBytes("密码正确"));
+
+            //NetMgr.Ins.SendAllClientNoSelf(obj.client.playerData.Username, MsgId.SC_OTHER_PLAYWE_ONLINE, obj.client.playerData.ToByteArray());
         }
     }
 }
