@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package PlayerDataProtocol;
+
+enum AnimitorState{
+    Idle=0;
+    Move=1;
+    Atk=2;
+}
+
+message UserData{
+    string username=1;
+    string userPassword=2;
+}
+
+message PlayerData{
+    string username=1;
+    string path=2;
+    float posx=3;
+    float posz=4;
+    float roty=5;
+    AnimitorState aniState=6;
+    int32 nowHp=7;
+    int32 maxHp=8;
+}
+
+message OnLinePlayer{
+    repeated PlayerData PlayerData=1;
+}

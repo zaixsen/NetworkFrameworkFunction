@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package SetGameInfo;
+
+enum AniState{
+    Idle=0;
+    Move=1;
+    Atk=2;
+    Death=3;
+}
+
+message Pos{
+    float X=1;
+    float Y=2;
+    float Z=3;
+}
+message Rotate{
+    float X=1;
+    float Y=2;
+    float Z=3;
+}
+message HpSlider{
+    int32 maxHp=1;
+    int32 nowHp=2;
+}
+message PlayerData{
+    string Username=1;
+    Pos Position=2;
+    Rotate rot=3;
+    HpSlider hp=4;
+    AniState state=5;
+}   
+message SundriesData
+{
+     string id=1;
+     string path=2;
+     Rotate rot=3;
+     Pos postion=4;
+}
+message SundriesDataList{
+    repeated SundriesData SundriesList=1;
+}

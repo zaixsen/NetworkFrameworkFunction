@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package DoubleManFootball;
+
+message PlayerData{
+    string sername=1;
+    float posx=2;
+    float posz=3;
+    float roty=4;
+}
+
+message FootballPos{
+    float posx=2;
+    float posz=3;
+}
+
+message RoomData{
+    int32 personNumber=1;
+}
+
+message OnlinePlayer{
+    repeated PlayerData allPlayer=1;
+}

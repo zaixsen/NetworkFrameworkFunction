@@ -1,0 +1,42 @@
+syntax = "proto3";   
+
+package PlayerInfo;  //命名空间  包
+//动画状态   枚举从0开始
+enum AniState
+{ 
+    idle=0;
+    run=1;
+    attack=2;
+    death=3;
+}
+//玩家信息   类从1 开始
+message PlayerData
+{
+    string path=1;
+    string username=2;
+    float posx=3;
+    float posz=4;
+    float rosy=5;   
+    int32 userId=6;
+    AniState aniState=7;
+    int32 nowHp =8;
+    int32 allHp =9;
+    
+}
+//上线人数
+message  OnlinePlayer
+{
+    repeated PlayerData allPlyer=1;
+}
+
+message RoomData
+{
+    int32 roomId=1;
+    int32 roomMaxPerson=2;
+    repeated PlayerData allPlyer=3;   //房间内玩家
+    int32 roomState=4;
+}
+
+message RoomList{
+    repeated RoomData roomList=1; 
+}
