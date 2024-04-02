@@ -1,0 +1,14 @@
+E:\AA_Net\Project\day10Server\day10Server\bin\Debug\day10Server.exe.config
+E:\AA_Net\Project\day10Server\day10Server\bin\Debug\day10Server.exe
+E:\AA_Net\Project\day10Server\day10Server\bin\Debug\day10Server.pdb
+E:\AA_Net\Project\day10Server\day10Server\obj\Debug\day10Server.csproj.AssemblyReference.cache
+E:\AA_Net\Project\day10Server\day10Server\obj\Debug\day10Server.csproj.CoreCompileInputs.cache
+E:\AA_Net\Project\day10Server\day10Server\obj\Debug\day10Server.exe
+E:\AA_Net\Project\day10Server\day10Server\obj\Debug\day10Server.pdb
+E:\AA_Net\Project\examDay10Server\day10Server\bin\Debug\day10Server.exe.config
+E:\AA_Net\Project\examDay10Server\day10Server\bin\Debug\day10Server.exe
+E:\AA_Net\Project\examDay10Server\day10Server\bin\Debug\day10Server.pdb
+E:\AA_Net\Project\examDay10Server\day10Server\obj\Debug\day10Server.csproj.AssemblyReference.cache
+E:\AA_Net\Project\examDay10Server\day10Server\obj\Debug\day10Server.csproj.CoreCompileInputs.cache
+E:\AA_Net\Project\examDay10Server\day10Server\obj\Debug\day10Server.exe
+E:\AA_Net\Project\examDay10Server\day10Server\obj\Debug\day10Server.pdb
